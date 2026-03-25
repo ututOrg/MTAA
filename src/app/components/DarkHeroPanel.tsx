@@ -46,21 +46,21 @@ export function DarkHeroPanel({ isDark }: { isDark: boolean }) {
             </div>
 
             {/* Stats Cards */}
-            <div className="grid gap-4 md:grid-cols-3">
-                {stats.map((stat, index) => (
-                    <Card
-                        key={index}
-                        className={`p-6 backdrop-blur-sm ${
-                            isDark
-                                ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'
-                                : 'border-gray-200 bg-white shadow-sm'
-                        }`}
-                    >
-                        <p className={`text-4xl ${isDark ? 'text-white' : 'text-gray-900'}`}>{stat.value}</p>
-                        <p className={`mt-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{stat.label}</p>
-                    </Card>
-                ))}
-            </div>
+            {/*<div className="grid gap-4 md:grid-cols-3">*/}
+            {/*    {stats.map((stat, index) => (*/}
+            {/*        <Card*/}
+            {/*            key={index}*/}
+            {/*            className={`p-6 backdrop-blur-sm ${*/}
+            {/*                isDark*/}
+            {/*                    ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'*/}
+            {/*                    : 'border-gray-200 bg-white shadow-sm'*/}
+            {/*            }`}*/}
+            {/*        >*/}
+            {/*            <p className={`text-4xl ${isDark ? 'text-white' : 'text-gray-900'}`}>{stat.value}</p>*/}
+            {/*            <p className={`mt-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{stat.label}</p>*/}
+            {/*        </Card>*/}
+            {/*    ))}*/}
+            {/*</div>*/}
 
             {/* Charts Grid */}
             <div className="grid gap-6 lg:grid-cols-2">

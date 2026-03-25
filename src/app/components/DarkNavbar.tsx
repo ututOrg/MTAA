@@ -1,58 +1,78 @@
-import { Bell, Sun, Moon } from 'lucide-react';
-import { Button } from './ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { NavLink } from 'react-router';
+import {Bell, Menu, Sun, Moon} from 'lucide-react';
+import {Button} from './ui/button';
+import {Avatar, AvatarFallback, AvatarImage} from './ui/avatar';
+import {NavLink} from 'react-router';
+import {useState} from 'react';
 
 interface DarkNavbarProps {
     isDark: boolean;
     toggleTheme: () => void;
 }
 
-export function DarkNavbar({ isDark, toggleTheme }: DarkNavbarProps) {
+export function DarkNavbar({isDark, toggleTheme}: DarkNavbarProps) {
+    const [open, setOpen] = useState(false);
+
     const tabs = [
-        { name: 'Dashboard', path: '/' },
-        { name: 'Production', path: '/production' },
-        { name: 'Logistics', path: '/logistics' },
-        { name: 'Sales', path: '/sales' },
+        {name: 'Танилцуулга', path: '/'},
+        {name: 'Түүхэн замнал', path: '/production'},
+        {name: 'Зорилго зорилт', path: '/logistics'},
+        {name: 'Үйл ажиллагааны чиглэл', path: '/sales'},
+        {name: 'Цаашдын зорилт', path: '/sales'},
     ];
 
     return (
-        <nav className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl ${
-            isDark
-                ? 'border-white/10 bg-black/50'
-                : 'border-gray-200 bg-white/80'
-        }`}>
-            <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between gap-6 px-8">
-                {/* Logo */}
+        <nav
+            className={`fixed top-0 left-0 z-50 w-full backdrop-blur-2xl border-b transition-all
+      ${isDark
+                ? 'bg-black/30 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)]'
+                : 'bg-white/20 border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.05)]'
+            }`}
+        >
+            <div className="mx-auto flex h-16 md:h-20 max-w-[1400px] items-center justify-between px-4 md:px-8">
+
+                {/* LEFT */}
                 <div className="flex items-center gap-3">
-                    <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                        isDark ? 'bg-white' : 'bg-gray-900'
-                    }`}>
-                        <div className={`h-6 w-6 rounded-lg ${
-                            isDark ? 'bg-black' : 'bg-white'
-                        }`}></div>
+                    <button onClick={() => setOpen(!open)} className="md:hidden">
+                        <Menu className={`h-6 w-6 ${isDark ? 'text-white' : 'text-black'}`}/>
+                    </button>
+
+                    <div className="flex items-center gap-3">
+                        <div className={`flex h-9 w-9 md:h-10 md:w-10 rounded-xl items-center justify-center ${
+                            isDark ? 'bg-white' : 'bg-gray-900'
+                        }`}>
+                            <div className={`h-5 w-5 md:h-6 md:w-6 rounded-lg ${
+                                isDark ? 'bg-black' : 'bg-white'
+                            }`}/>
+                        </div>
+                        {/*<img src={"/src/app/components/assets/mtan.png"} alt="mtan" style={{ width: '50px', height: '50px' }} />*/}
+
+                        <span className={`text-lg md:text-xl font-medium ${
+                            isDark ? 'text-white' : 'text-gray-900'
+                        }`}>
+              МТАА
+            </span>
                     </div>
-                    <span className={`text-xl ${isDark ? 'text-white' : 'text-gray-900'}`}>Stockly</span>
                 </div>
 
-                {/* Navigation Tabs */}
-                <div className={`flex items-center gap-2 rounded-full p-1.5 ${
-                    isDark ? 'bg-white/5' : 'bg-gray-100'
-                }`}>
+                {/* CENTER */}
+                <div
+                    className={`hidden md:flex items-center gap-2 rounded-full p-1.5
+          ${isDark ? 'bg-white/10' : 'bg-white/40 backdrop-blur-md'}`}
+                >
                     {tabs.map((tab) => (
                         <NavLink
                             key={tab.path}
                             to={tab.path}
                             end={tab.path === '/'}
-                            className={({ isActive }) =>
+                            className={({isActive}) =>
                                 `rounded-full px-5 py-2 text-sm transition-all ${
                                     isActive
                                         ? isDark
                                             ? 'bg-white text-black'
-                                            : 'bg-gray-900 text-white'
+                                            : 'bg-black text-white shadow'
                                         : isDark
                                             ? 'text-gray-400 hover:text-white'
-                                            : 'text-gray-600 hover:text-gray-900'
+                                            : 'text-gray-600 hover:text-black'
                                 }`
                             }
                         >
@@ -61,60 +81,75 @@ export function DarkNavbar({ isDark, toggleTheme }: DarkNavbarProps) {
                     ))}
                 </div>
 
-                {/* Right Section */}
-                <div className="flex items-center gap-4">
-                    {/* Theme Toggle */}
-                    <div className={`flex items-center gap-2 rounded-full p-1.5 ${
-                        isDark ? 'bg-white/5' : 'bg-gray-100'
-                    }`}>
-                        <button
-                            onClick={toggleTheme}
-                            className={`rounded-full px-3 py-1.5 text-sm transition-all ${
-                                !isDark
-                                    ? 'bg-gray-900 text-white'
-                                    : 'bg-transparent text-gray-400'
-                            }`}
-                        >
-                            Light
-                        </button>
-                        <button
-                            onClick={toggleTheme}
-                            className={`rounded-full px-3 py-1.5 text-sm transition-all ${
-                                isDark
-                                    ? 'bg-lime-500 text-black'
-                                    : 'bg-transparent text-gray-600'
-                            }`}
-                        >
-                            Dark
-                        </button>
-                    </div>
+                {/* RIGHT */}
+                <div className="flex items-center gap-2 md:gap-4">
 
-                    {/* Notification */}
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className={`relative h-10 w-10 rounded-full ${
-                            isDark
-                                ? 'bg-white/5 hover:bg-white/10'
-                                : 'bg-gray-100 hover:bg-gray-200'
+                    {/* 🌙 MOBILE ICON */}
+                    <button
+                        onClick={toggleTheme}
+                        className={`sm:hidden h-9 w-9 rounded-full flex items-center justify-center transition active:scale-90
+            ${isDark
+                            ? 'bg-white/10 hover:bg-white/20'
+                            : 'bg-white/40 backdrop-blur-md hover:bg-white/60'
                         }`}
                     >
-                        <Bell className={`h-5 w-5 ${isDark ? 'text-white' : 'text-gray-900'}`} />
-                        <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-lime-500"></span>
-                    </Button>
+                        {isDark ? (
+                            <Sun className="h-5 w-5 text-yellow-300"/>
+                        ) : (
+                            <Moon className="h-5 w-5 text-gray-800"/>
+                        )}
+                    </button>
 
-                    {/* User Avatar */}
-                    <div className={`flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 ${
-                        isDark ? 'bg-white/5' : 'bg-gray-100'
-                    }`}>
-                        <Avatar className="h-8 w-8">
-                            <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" />
-                            <AvatarFallback>TR</AvatarFallback>
-                        </Avatar>
-                        <span className={`text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}>Terry</span>
+                    {/* 💻 DESKTOP BUTTON */}
+                    <div
+                        className={`hidden sm:flex items-center gap-2 rounded-full p-1.5
+            ${isDark ? 'bg-white/10' : 'bg-white/40 backdrop-blur-md'}`}
+                    >
+                        <button
+                            onClick={toggleTheme}
+                            className={`px-3 py-1.5 rounded-full text-sm transition ${
+                                !isDark
+                                    ? 'bg-black text-white shadow'
+                                    : 'text-gray-400 hover:text-white'
+                            }`}
+                        >
+                            <Sun className="h-5 w-5 text-yellow-300"/>
+                        </button>
+
+                        <button
+                            onClick={toggleTheme}
+                            className={`px-3 py-1.5 rounded-full text-sm transition ${
+                                isDark
+                                    ? 'bg-lime-400 text-black shadow'
+                                    : 'text-gray-600'
+                            }`}
+                        >
+                            <Moon className="h-5 w-5 text-gray-800"/>
+                        </button>
                     </div>
+
+                    {/* 🔔 Notification */}
                 </div>
             </div>
+
+            {/* 📱 MOBILE MENU */}
+            {open && (
+                <div
+                    className={`md:hidden px-4 pb-4 backdrop-blur-xl
+          ${isDark ? 'bg-black/40 text-white' : 'bg-white/60 text-black'}`}
+                >
+                    {tabs.map((tab) => (
+                        <NavLink
+                            key={tab.path}
+                            to={tab.path}
+                            onClick={() => setOpen(false)}
+                            className="block py-2 border-b border-white/20"
+                        >
+                            {tab.name}
+                        </NavLink>
+                    ))}
+                </div>
+            )}
         </nav>
     );
 }

@@ -9,7 +9,7 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-    Legend,
+    Legend, AreaChart, Area,
 } from 'recharts';
 import { TrendingUp, Package, AlertCircle, Clock } from 'lucide-react';
 import { useOutletContext } from 'react-router';
@@ -63,6 +63,12 @@ const stats = [
     },
 ];
 
+const incidentsData = [
+    { age: '18-25', value: 7 },
+    { age: '26-35', value: 19 },
+    { age: '36-45', value: 22 },
+    { age: '46-с дээш', value: 3 },
+];
 export default function Production() {
     const { isDark } = useOutletContext<{ isDark: boolean }>();
 
@@ -180,46 +186,79 @@ export default function Production() {
             </div>
 
             {/* Efficiency Trend */}
-            <Card className={`p-6 backdrop-blur-sm ${
-                isDark
-                    ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'
-                    : 'border-gray-200 bg-white shadow-sm'
-            }`}>
+
+            <Card
+                className={`p-6 backdrop-blur-sm ${
+                    isDark
+                        ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'
+                        : 'border-gray-200 bg-white shadow-sm'
+                }`}
+            >
                 <div className="mb-4 flex items-center justify-between">
-                    <div>
-                        <h3 className={`text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>Production Efficiency Trend</h3>
-                        <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Percentage efficiency over time</p>
-                    </div>
-                    <button className={`rounded-lg px-3 py-1.5 text-xs ${
-                        isDark
-                            ? 'bg-white/5 text-gray-300 hover:bg-white/10'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}>
-                        7 months ▼
+                    <h3
+                        className={`text-sm ${
+                            isDark ? 'text-white' : 'text-gray-900'
+                        }`}
+                    >
+                        Албаны Насны ангилал
+                    </h3>
+                    <button
+                        className={`text-xs ${
+                            isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        {/*6 months ▼*/}
                     </button>
                 </div>
-                <ResponsiveContainer width="100%" height={280}>
-                    <LineChart data={productionData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#ffffff15' : '#e5e7eb'} />
-                        <XAxis dataKey="month" stroke={isDark ? '#9ca3af' : '#4b5563'} fontSize={11} />
-                        <YAxis stroke={isDark ? '#9ca3af' : '#4b5563'} fontSize={11} domain={[90, 110]} />
-                        <Tooltip
-                            contentStyle={{
-                                backgroundColor: isDark ? '#1f2937' : '#ffffff',
-                                border: isDark ? '1px solid #374151' : '1px solid #e5e7eb',
-                                borderRadius: '8px',
-                                color: isDark ? '#fff' : '#000',
-                            }}
-                        />
-                        <Line
-                            type="monotone"
-                            dataKey="efficiency"
-                            stroke="#a3e635"
-                            strokeWidth={3}
-                            dot={{ fill: '#a3e635', r: 5 }}
-                        />
-                    </LineChart>
-                </ResponsiveContainer>
+                <div className="relative">
+                    <ResponsiveContainer width="100%" height={180}>
+                        <AreaChart data={incidentsData}>
+                            <defs>
+                                <linearGradient id="incidentGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#fb923c" stopOpacity={0.4} />
+                                    <stop
+                                        offset="95%"
+                                        stopColor={isDark ? '#7c2d12' : '#fed7aa'}
+                                        stopOpacity={0.1}
+                                    />
+                                </linearGradient>
+                            </defs>
+                            <XAxis
+                                dataKey="age"
+                                stroke={isDark ? '#9ca3af' : '#4b5563'}
+                                fontSize={10}
+                                tickLine={false}
+                                axisLine={false}
+                            />
+                            <YAxis hide />
+                            <Tooltip
+                                contentStyle={{
+                                    backgroundColor: isDark ? '#1f2937' : '#ffffff',
+                                    border: isDark ? '1px solid #374151' : '1px solid #e5e7eb',
+                                    borderRadius: '8px',
+                                    color: isDark ? '#fff' : '#000',
+                                }}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="value"
+                                stroke="#fb923c"
+                                strokeWidth={2}
+                                fill="url(#incidentGradient)"
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
+                    <div className="absolute right-4 top-8 rounded-lg bg-orange-400 px-3 py-1.5">
+                        <p className="text-sm text-black">11</p>
+                    </div>
+                </div>
+                <p
+                    className={`mt-2 text-center text-xs ${
+                        isDark ? 'text-gray-400' : 'text-gray-600'
+                    }`}
+                >
+                    Monthly reported incidents
+                </p>
             </Card>
         </div>
     );
