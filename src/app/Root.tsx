@@ -26,7 +26,7 @@ export default function Root() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#f1f3f7] via-[#e9edf5] to-[#dde3ee]" />
 
                     {/* GLOW */}
-                    <div className="absolute top-[-120px] left-1/3 w-[500px] h-[500px] bg-orange-900/30 blur-[190px] rounded-full" />
+                    <div className="absolute top-[-120px] left-1/3 w-[500px] h-[500px] bg-orange-100/30 blur-[190px] rounded-full" />
                     <div className="absolute bottom-[-120px] left-[-100px] w-[400px] h-[400px] bg-blue-400/30 blur-[140px] rounded-full" />
                     <div className="absolute top-1/2 right-[-120px] w-[400px] h-[400px] bg-purple-400/30 blur-[140px] rounded-full" />
 

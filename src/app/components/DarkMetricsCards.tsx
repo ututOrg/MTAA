@@ -219,6 +219,7 @@ export function DarkMetricsCards({ isDark }: { isDark: boolean }) {
                         </p>
                     </div>
                 </div>
+
                 <div className="mt-4 flex items-center justify-center gap-6 text-xs">
                     <div className="flex items-center gap-2">
                         <div className="h-2.5 w-2.5 rounded-full bg-lime-400"></div>
@@ -249,7 +250,7 @@ export function DarkMetricsCards({ isDark }: { isDark: boolean }) {
                     }`}>
                     </button>
                 </div>
-                <ResponsiveContainer width="100%" height={280}>
+                <ResponsiveContainer width="100%" height={350}>
                     <LineChart data={productionData}>
                         <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#ffffff15' : '#e5e7eb'} />
                         <XAxis dataKey="age" stroke={isDark ? '#9ca3af' : '#4b5563'} fontSize={11} />
