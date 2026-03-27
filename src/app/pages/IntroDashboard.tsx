@@ -97,7 +97,7 @@ export default function IntroDashboard({ isDark }: { isDark: boolean }) {
                             <button
                                 onClick={next}
                                 className="absolute right-3 top-1/2 -translate-y-1/2 z-20
-                bg-white/20 backdrop-blur-md rounded-full p-2 hover:scale-110 transition"
+   bg-white/20 backdrop-blur-md rounded-full p-2 hover:scale-110 transition"
                             >
                                 <ChevronRight />
                             </button>

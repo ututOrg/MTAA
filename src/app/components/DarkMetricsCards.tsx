@@ -22,7 +22,16 @@ const metricsData = [
         manual: 12,
     },
 ];
-
+const incidentsData = [
+    { age: '', "Ажилтаны тоо": 0 },
+    { age: '2006 он', "Ажилтаны тоо": 19 },
+    { age: '2011 он', "Ажилтаны тоо": 22 },
+    { age: '2013 он', "Ажилтаны тоо": 3 },
+    { age: '2014 он', "Ажилтаны тоо": 3 },
+    { age: '2015 он', "Ажилтаны тоо": 3 },
+    { age: '2017 он', "Ажилтаны тоо": 53 },
+    { age: '2025 он', "Ажилтаны тоо": 53 }
+];
 const productionData = [
     { age: '18-25',  efficiency: 7 },
     { age: '26-35', efficiency: 19 },
@@ -40,81 +49,83 @@ const warehouseData = [
 
 export function DarkMetricsCards({ isDark }: { isDark: boolean }) {
     return (
-        <div className="grid gap-6 lg:grid-cols-3">
-            {/*<Card*/}
-            {/*    className={`p-6 backdrop-blur-sm ${*/}
-            {/*        isDark*/}
-            {/*            ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'*/}
-            {/*            : 'border-gray-200 bg-white shadow-sm'*/}
-            {/*    }`}*/}
-            {/*>*/}
-            {/*    <div className="mb-4 flex items-center justify-between">*/}
-            {/*        <h3*/}
-            {/*            className={`text-sm ${*/}
-            {/*                isDark ? 'text-white' : 'text-gray-900'*/}
-            {/*            }`}*/}
-            {/*        >*/}
-            {/*            Албаны нийт ажилтан*/}
-            {/*        </h3>*/}
-            {/*        <button*/}
-            {/*            className={`text-xs ${*/}
-            {/*                isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-900'*/}
-            {/*            }`}*/}
-            {/*        >*/}
-            {/*        </button>*/}
-            {/*    </div>*/}
-            {/*    <div className="grid grid-cols-2 gap-3">*/}
-            {/*        <div*/}
-            {/*            className={`rounded-2xl border-4 border-lime-400 p-6 text-center ${*/}
-            {/*                isDark ? 'bg-gradient-to-br from-white/10 to-white/5' : 'bg-gradient-to-br from-green-50 to-white'*/}
-            {/*            }`}*/}
-            {/*        >*/}
-            {/*            <p*/}
-            {/*                className={`text-3xl ${*/}
-            {/*                    isDark ? 'text-white' : 'text-gray-900'*/}
-            {/*                }`}*/}
-            {/*            >*/}
-            {/*                56*/}
-            {/*            </p>*/}
-            {/*        </div>*/}
-            {/*        <div*/}
-            {/*            className={`rounded-2xl border-4 border-orange-400 p-6 text-center ${*/}
-            {/*                isDark ? 'bg-gradient-to-br from-white/10 to-white/5' : 'bg-gradient-to-br from-orange-50 to-white'*/}
-            {/*            }`}*/}
-            {/*        >*/}
-            {/*            <p*/}
-            {/*                className={`text-3xl ${*/}
-            {/*                    isDark ? 'text-white' : 'text-gray-900'*/}
-            {/*                }`}*/}
-            {/*            >*/}
-            {/*                1*/}
-            {/*            </p>*/}
-            {/*        </div>*/}
-            {/*        <div*/}
-            {/*            className={`rounded-2xl border-4 border-orange-400 p-6 text-center ${*/}
-            {/*                isDark ? 'bg-gradient-to-br from-white/10 to-white/5' : 'bg-gradient-to-br from-orange-50 to-white'*/}
-            {/*            }`}*/}
-            {/*        >*/}
-            {/*            <p*/}
-            {/*                className={`text-3xl ${*/}
-            {/*                    isDark ? 'text-white' : 'text-gray-900'*/}
-            {/*                }`}*/}
-            {/*            >*/}
-            {/*                1*/}
-            {/*            </p>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="mt-4 flex items-center justify-center gap-6 text-xs">*/}
-            {/*        <div className="flex items-center gap-2">*/}
-            {/*            <div className="h-2.5 w-2.5 rounded-full bg-lime-400"></div>*/}
-            {/*            <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>Automated</span>*/}
-            {/*        </div>*/}
-            {/*        <div className="flex items-center gap-2">*/}
-            {/*            <div className="h-2.5 w-2.5 rounded-full bg-orange-400"></div>*/}
-            {/*            <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>Manual</span>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</Card>*/}
+     <div>
+            <Card
+                className={`p-6 backdrop-blur-sm ${
+                    isDark
+                        ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'
+                        : 'border-gray-200 bg-white shadow-sm'
+                }`}
+            >
+                <div className="mb-4 flex items-center justify-between">
+                    <h3
+                        className={`text-sm ${
+                            isDark ? 'text-white' : 'text-gray-900'
+                        }`}
+                    >
+                        Албаны ажилчид
+
+                    </h3>
+                    <button
+                        className={`text-xs ${
+                            isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        {/*6 months ▼*/}
+                    </button>
+                </div>
+                <div className="relative">
+                    <ResponsiveContainer width="100%" height={180}>
+                        <AreaChart data={incidentsData}>
+                            <defs>
+                                <linearGradient id="incidentGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#fb923c" stopOpacity={0.4} />
+                                    <stop
+                                        offset="95%"
+                                        stopColor={isDark ? '#7c2d12' : '#fed7aa'}
+                                        stopOpacity={0.1}
+                                    />
+                                </linearGradient>
+                            </defs>
+                            <XAxis
+                                dataKey="age"
+                                stroke={isDark ? '#9ca3af' : '#4b5563'}
+                                fontSize={10}
+                                tickLine={false}
+                                axisLine={false}
+                            />
+                            <YAxis hide />
+
+                            <Tooltip
+                                contentStyle={{
+                                    backgroundColor: isDark ? '#1f2937' : '#ffffff',
+                                    border: isDark ? '1px solid #374151' : '1px solid #e5e7eb',
+                                    borderRadius: '8px',
+                                    color: isDark ? '#fff' : '#000',
+                                }}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="Ажилтаны тоо"
+                                stroke="#fb923c"
+                                strokeWidth={2}
+                                fill="url(#incidentGradient)"
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
+                    <div className="absolute right-4 top-8 rounded-lg bg-orange-400 px-3 py-1.5">
+                        <p className="text-sm text-black">53</p>
+                    </div>
+                </div>
+                <p
+                    className={`mt-2 text-center text-xs ${
+                        isDark ? 'text-gray-400' : 'text-gray-600'
+                    }`}
+                >
+                    Он цагийн дараалалаар
+                </p>
+            </Card>
+    <div className="grid gap-6 lg:grid-cols-3">
             <Card className={`p-6 backdrop-blur-sm ${
                 isDark
                     ? 'border-white/10 bg-gradient-to-br from-white/10 to-white/5'
@@ -274,5 +285,6 @@ export function DarkMetricsCards({ isDark }: { isDark: boolean }) {
                 </ResponsiveContainer>
             </Card>
         </div>
+     </div>
     );
 }

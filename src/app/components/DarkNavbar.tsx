@@ -14,10 +14,10 @@ export function DarkNavbar({isDark, toggleTheme}: DarkNavbarProps) {
 
     const tabs = [
         {name: 'Танилцуулга', path: '/'},
-        {name: 'Түүхэн замнал', path: '/production'},
         {name: 'Зорилго зорилт', path: '/logistics'},
+        {name: 'Түүхэн замнал', path: '/production'},
         {name: 'Үйл ажиллагааны чиглэл', path: '/sales'},
-        {name: 'Цаашдын зорилт', path: '/sales'},
+        {name: 'Цаашдын зорилт', path: '/pov'},
     ];
 
     return (
@@ -36,25 +36,25 @@ export function DarkNavbar({isDark, toggleTheme}: DarkNavbarProps) {
                         <Menu className={`h-6 w-6 ${isDark ? 'text-white' : 'text-black'}`}/>
                     </button>
 
-                    <div className="flex items-center gap-3">
+            {/*        <div className="flex items-center gap-3">*/}
 
-                        <div className={`p-0.5 rounded-full ${
-                            isDark ? 'bg-gray-600' : 'bg-gray-800'
-                        }`}>
-                            <img
-                                src={"/src/app/components/assets/mtan.png"}
-                                alt="mtan"
-                                className="w-[48px] h-[48px] rounded-full object-cover"
-                                style={{ imageRendering: 'auto' }}
-                            />
-                        </div>
+            {/*            /!*<div className={`p-0.5 rounded-full ${*!/*/}
+            {/*            /!*    isDark ? 'bg-gray-600' : 'bg-gray-800'*!/*/}
+            {/*            /!*}`}>*!/*/}
+            {/*            /!*    <img*!/*/}
+            {/*            /!*        src={"/src/app/components/assets/mtan.png"}*!/*/}
+            {/*            /!*        alt="mtan"*!/*/}
+            {/*            /!*        className="w-[48px] h-[48px] rounded-full object-cover"*!/*/}
+            {/*            /!*        style={{ imageRendering: 'auto' }}*!/*/}
+            {/*            /!*    />*!/*/}
+            {/*            /!*</div>*!/*/}
 
-                        <span className={`text-lg md:text-xl font-medium ${
-                            isDark ? 'text-white' : 'text-gray-900'
-                        }`}>
-              МТАА
-            </span>
-                    </div>
+            {/*            <span className={`text-lg md:text-xl font-medium ${*/}
+            {/*                isDark ? 'text-white' : 'text-gray-900'*/}
+            {/*            }`}>*/}
+            {/*  МТАА*/}
+            {/*</span>*/}
+            {/*        </div>*/}
                 </div>
 
                 {/* CENTER */}
