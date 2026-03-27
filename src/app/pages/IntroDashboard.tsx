@@ -10,7 +10,7 @@ const slides = [
     {
         title: "ШИНЭ СИСТЕМ НЭВТРҮҮЛЭЛТ",
         subtitle: "МЭДЭЭЛЭЛ",
-        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+        image: "/src/app/components/assets/alba.jpg",
     },
 ];
 

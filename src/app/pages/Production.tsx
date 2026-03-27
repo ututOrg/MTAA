@@ -64,10 +64,14 @@ const stats = [
 ];
 
 const incidentsData = [
-    { age: '18-25', value: 7 },
-    { age: '26-35', value: 19 },
-    { age: '36-45', value: 22 },
-    { age: '46-с дээш', value: 3 },
+    { age: '', value: 0 },
+    { age: '2006 он', value: 19 },
+    { age: '2011 он', value: 22 },
+    { age: '2013 он', value: 3 },
+    { age: '2014 он', value: 3 },
+    { age: '2015 он', value: 3 },
+    { age: '2017 он', value: 53 },
+    { age: '2025 он', value: 53 }
 ];
 export default function Production() {
     const { isDark } = useOutletContext<{ isDark: boolean }>();
@@ -200,7 +204,8 @@ export default function Production() {
                             isDark ? 'text-white' : 'text-gray-900'
                         }`}
                     >
-                        Албаны Насны ангилал
+                            Нийт ажилчид
+
                     </h3>
                     <button
                         className={`text-xs ${
@@ -231,6 +236,7 @@ export default function Production() {
                                 axisLine={false}
                             />
                             <YAxis hide />
+
                             <Tooltip
                                 contentStyle={{
                                     backgroundColor: isDark ? '#1f2937' : '#ffffff',
@@ -249,7 +255,7 @@ export default function Production() {
                         </AreaChart>
                     </ResponsiveContainer>
                     <div className="absolute right-4 top-8 rounded-lg bg-orange-400 px-3 py-1.5">
-                        <p className="text-sm text-black">11</p>
+                        <p className="text-sm text-black">53</p>
                     </div>
                 </div>
                 <p

@@ -37,14 +37,17 @@ export function DarkNavbar({isDark, toggleTheme}: DarkNavbarProps) {
                     </button>
 
                     <div className="flex items-center gap-3">
-                        <div className={`flex h-9 w-9 md:h-10 md:w-10 rounded-xl items-center justify-center ${
-                            isDark ? 'bg-white' : 'bg-gray-900'
+
+                        <div className={`p-0.5 rounded-full ${
+                            isDark ? 'bg-gray-600' : 'bg-gray-800'
                         }`}>
-                            <div className={`h-5 w-5 md:h-6 md:w-6 rounded-lg ${
-                                isDark ? 'bg-black' : 'bg-white'
-                            }`}/>
+                            <img
+                                src={"/src/app/components/assets/mtan.png"}
+                                alt="mtan"
+                                className="w-[48px] h-[48px] rounded-full object-cover"
+                                style={{ imageRendering: 'auto' }}
+                            />
                         </div>
-                        {/*<img src={"/src/app/components/assets/mtan.png"} alt="mtan" style={{ width: '50px', height: '50px' }} />*/}
 
                         <span className={`text-lg md:text-xl font-medium ${
                             isDark ? 'text-white' : 'text-gray-900'
