@@ -15,4 +15,14 @@ html {
 
 section {
     scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }

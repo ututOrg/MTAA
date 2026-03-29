@@ -1,105 +1,110 @@
-import { motion } from "framer-motion";
-import { useOutletContext } from "react-router";
+import {motion} from "framer-motion";
+import {useOutletContext} from "react-router";
+import {ArrowRightIcon} from "lucide-react"; // lucide-react ашиглав
 
-const data = [
-    "Цэг салбаруудын автомат ажиллагаанд оруулах бэлтгэлийг хангах, нэвтрэлт, дохиолол, хамгаалалтын систем нэвтрүүлэх\n",
-    "Мэдээллийн аюулгүй байдлын эрсдэлийн үнэлгээний зөвлөмжийн дагуу мэдээллийн аюулгүй байдлын бодлого, дүрэм журмыг шинэчилж боловсруулж хэрэгжүүлэх\n",
-    "Байгууллагад сүүлийн үеийн дэвшилтэд техник технологи нэвтрүүлж санхүүгийн хэмнэлт гаргаж, хиймэл оюун ухааныг үйл ажиллагаанд нэвтрүүлэх \n",
-    "Хөдөлмөрийн аюулгүй байдал, эрүүл ахуйн менежментийн тогтолцооны MNS ISO 45001 стандартыг мөрдөж, программын ашиглалт, шинэчлэлтийг хийж ажиллах\n",
-    "Байгууллага дээр хэрэгжиж байгаа төсөл хөтөлбөрүүдийн автоматжуулалт, программ хангамж мэдээллийн технологийн ажлууд дээр хяналт тавин хүлээж авч хариуцан ажиллах\n",
+const goals = [
+    {title: "Автоматжуулалт", desc: "Дэд салбаруудын автомат ажиллагаанд оруулах бэлтгэлийг хангах"},
+    {
+        title: "Аюулгүй байдал",
+        desc: "Мэдээллийн аюулгүй байдлын эрсдэлийн үнэлгээний зөвлөмжийн дагуу бодлого, дүрэм журмыг шинэчлэх"
+    },
+    {
+        title: "Дижитал шилжилт",
+        desc: "Байгууллагад сүүлийн үеийн техник технологи нэвтрүүлж, хиймэл оюун ухааныг үйл ажиллагаанд ашиглах"
+    },
+    {title: "Стандартчилал", desc: "MNS ISO 45001 стандартыг мөрдөж ажиллах"},
+    {
+        title: "Хяналт ба удирдлага",
+        desc: "Төсөл хөтөлбөрүүдийн автоматжуулалт, IT ажлууд дээр хяналт тавин хүлээж авч хариуцан ажиллах"
+    }
 ];
 
 export default function Zorilt() {
-    const { isDark } = useOutletContext<{ isDark: boolean }>();
+    const {isDark} = useOutletContext<{ isDark: boolean }>();
 
     return (
         <section
-            className={`relative w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden px-4 ${
-                isDark
-                    ? "bg-gradient-to-br from-[#020617] via-[#0f172a] to-black"
-                    : "bg-gradient-to-br from-[#eef2ff] via-[#f8fafc] to-[#fdf2f8]"
-            }`}
-        >
-            {/* GLOW */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/30 blur-[120px]" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-400/30 blur-[120px]" />
+            className={`relative w-full mt-5 flex items-center justify-center overflow-hidden transition-colors duration-700 ${
+                isDark ? "bg-[#0a0a0a]" : "bg-[#fcfcfd]"
+            }`}>
 
-            {/* CONTENT */}
-            <div className="relative z-10 w-full max-w-[1200px] grid md:grid-cols-2 gap-16 items-center">
+            {/* ATMOSPHERIC DECORATION (Glow and Text in background) */}
+            <div className="absolute inset-0 pointer-events-none opacity-20">
+                <div className={`absolute top-0 right-[-10%] w-[600px] h-[600px] rounded-full blur-[160px] ${
+                    isDark ? "bg-[#f02fc2]/10" : "bg-[#f02fc2]/5"
+                }`}/>
+                <div
+                    className={`absolute inset-0 transition-opacity duration-1000 ${isDark ? "opacity-20" : "opacity-[0.05]"}`}
+                    style={{
+                        backgroundImage: `radial-gradient(${isDark ? '#fff' : '#000'} 0.5px, transparent 0.5px)`,
+                        backgroundSize: "40px 40px"
+                    }}/>
+                <motion.div initial={{y: 0}} animate={{y: [0, -20, 0]}}
+                            transition={{duration: 10, repeat: Infinity}}
+                            className="absolute bottom-20 left-20">
+                    <p className={`text-[180px] font-black tracking-tighter ${isDark ? 'text-white/5' : 'text-slate-100'}`}>FUTURE</p>
+                </motion.div>
+            </div>
 
-                {/* LEFT */}
-                <div className="flex justify-center">
-                    <motion.img
-                        src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png"
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{ repeat: Infinity, duration: 3 }}
-                        className="w-[220px] md:w-[300px]"
-                    />
+            <div
+                className="relative z-10 max-w-[1500px] mx-auto px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+
+                {/* LEFT SIDE: Typography & CTAs (Sticky Header) */}
+                <div className="md:col-span-5 md:sticky md:top-32 space-y-16 py-12">
+                    <div className="space-y-6">
+                        <motion.span
+                            initial={{opacity: 0}} animate={{opacity: 1}}
+                            className="text-[#4CAF50] font-mono text-xs tracking-[0.4em] uppercase"
+                        >
+                            Next Generation Strategy
+                        </motion.span>
+                        <h2 className={`text-6xl md:text-8xl font-black tracking-tighter leading-none transition-colors ${
+                            isDark ? "text-white" : "text-slate-900"
+                        }`}>
+                            ЦААШДЫН <br/>
+                            <span
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CAF50] to-[#6094ea]">
+                                ЗОРИЛТ
+                            </span>
+                        </h2>
+                        <p className={`max-w-md text-base leading-relaxed ${isDark ? "text-slate-500" : "text-slate-600"}`}>
+                            Байгууллагын дижитал шилжилтийг эрчимжүүлж, инновацид суурилсан өгөгдлийн сангийн
+                            архитектур болон кибер аюулгүй байдлын цогц системийг нэвтрүүлнэ.
+                        </p>
+                    </div>
                 </div>
 
-                {/* RIGHT */}
-                <div className="space-y-10">
+                {/* RIGHT SIDE: Bio-Visual & Info Points */}
+                <div className="md:col-span-7 space-y-8 relative">
 
-                    <h2
-                        className={`text-3xl md:text-4xl font-bold ${
-                            isDark
-                                ? "bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text"
-                                : "bg-gradient-to-r from-blue-500 to-pink-500 text-transparent bg-clip-text"
-                        }`}
-                    >
-                        ЦААШДЫН ЗОРИЛТ
-                    </h2>
-
-                    <div className="space-y-5">
-
-                        {data.map((item, i) => (
+                    {/* Жагсаалтын картууд (Glassmorphism) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {goals.map((goal, idx) => (
                             <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: 80 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.2 }}
-                                className="flex gap-6 items-start"
+                                key={idx} initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}}
+                                viewport={{once: true}} transition={{delay: idx * 0.1, duration: 0.8}}
+                                className={`group p-8 rounded-[2rem] border transition-all duration-500 ${
+                                    isDark
+                                        ? "bg-[#111111]/60 border-white/5 hover:bg-white/[0.04] hover:border-white/10 backdrop-blur-2xl"
+                                        : "bg-white border-slate-200 hover:border-slate-300 hover:shadow-2xl shadow-sm"
+                                }`}
                             >
-                                {/* ===== TIMELINE ===== */}
-                                <div className="flex flex-col items-center">
+                                <div className="space-y-4 relative">
+                                            <span
+                                                className="text-transparent bg-clip-text bg-gradient-to-b from-[#4CAF50] to-[#6094ea]/20 font-bold text-5xl">0{idx + 1}</span>
+                                    <h3 className={`text-xl font-bold transition-colors ${isDark ? "text-white" : "text-slate-800"}`}>{goal.title}</h3>
+                                    <p className={`text-sm leading-relaxed ${isDark ? "text-slate-500" : "text-slate-600"}`}>{goal.desc}</p>
 
-                                    {/* DOT */}
-                                    <motion.div
-                                        animate={{ scale: [1, 1.4, 1] }}
-                                        transition={{ repeat: Infinity, duration: 2 }}
-                                        className="w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.9)]"
-                                    />
-
-                                    {/* LINE */}
-                                    {i !== data.length - 1 && (
-                                        <div className="relative w-[2px] h-24 bg-white/10 overflow-hidden mt-1">
-                                            <motion.div
-                                                animate={{ y: ["-100%", "100%"] }}
-                                                transition={{ repeat: Infinity, duration: 2 }}
-                                                className="absolute w-full h-[200%] bg-gradient-to-b from-blue-400 via-purple-400 to-transparent"
-                                            />
-                                        </div>
-                                    )}
-
+                                    {/* Гэрэлтсэн холбогч шугам */}
+                                    <div
+                                        className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-[#4CAF50] shadow-[0_0_10px_rgba(240,47,194,1)] animate-pulse"/>
                                 </div>
-
-                                {/* ===== CARD ===== */}
-                                <motion.div
-                                    whileHover={{ scale: 1.04, y: -4 }}
-                                    className={`rounded-xl px-6 py-4 transition-all w-full ${
-                                        isDark
-                                            ? "bg-white/5 border border-white/10 backdrop-blur-xl text-white"
-                                            : "bg-white/70 border border-gray-200 shadow-lg text-gray-800"
-                                    }`}
-                                >
-                                    {item}
-                                </motion.div>
                             </motion.div>
                         ))}
-
                     </div>
 
                 </div>
+
             </div>
         </section>
     );
