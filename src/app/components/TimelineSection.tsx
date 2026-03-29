@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-
+import img from "@/app/components/assets/file.png";
 export default function TimelineSection({ year, title, work, desc, isDark }: any) {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -52,7 +52,7 @@ export default function TimelineSection({ year, title, work, desc, isDark }: any
                                 className="drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
                             >
                                 <img
-                                    src="/src/app/components/assets/file.png"
+                                    src={img}
                                     alt="3D Visualization"
                                     className="w-full h-auto object-contain"
                                 />

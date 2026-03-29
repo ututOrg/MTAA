@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import albaImg from "@/app/components/assets/alba.jpg";
+import blogImg from "@/app/components/assets/blog_2.jpg";
 const slides = [
     {
         title: "МЭДЭЭЛЛИЙН ТЕХНОЛОГИ, АВТОМАТЖУУЛАЛТ АЛБАНЫ",
         subtitle: "ТАНИЛЦУУЛГА",
-        image: "/src/app/components/assets/blog_2.jpg",
+        image: albaImg,
     },
     {
         title: "ШИНЭ СИСТЕМ НЭВТРҮҮЛЭЛТ",
         subtitle: "МЭДЭЭЛЭЛ",
-        image: "/src/app/components/assets/alba.jpg",
+        image: blogImg,
     },
 ];
 
