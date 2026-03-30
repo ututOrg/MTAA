@@ -39,7 +39,7 @@ export default function SystemSection() {
 
                         <h1 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">ПРОГРАММ
                             ХАНГАМЖ, ХӨГЖҮҮЛЭЛТ</h1>
-                        <p className="text-sm text-slate-500 font-medium">Байгууллагын хэмжээнд 27 сервер, 79 нэр
+                        <p className="text-sm text-slate-500 font-medium mb-3">Байгууллагын хэмжээнд 27 сервер, 79 нэр
                             төрлийн программ хангамж</p>
                     </div>
 
@@ -70,7 +70,7 @@ export default function SystemSection() {
                         <div className="row-span-1 grid grid-cols-3 gap-4">
                             {SOFTWARE_STATS.map((stat, i) => (
                                 <div key={i}
-                                     className={`${i === 1 ? 'col-span-2' : 'col-span-1'} bg-white p-8 rounded-[3rem] border border-slate-100 flex flex-col justify-between relative overflow-hidden`}>
+                                     className={`${i === 1 ? 'col-span-2' : 'col-span-1'}  p-8 rounded-[3rem] border border-slate-100 flex flex-col justify-between relative overflow-hidden`}>
                                     <div className="relative z-10">
                                         <div className="text-2xl mb-4">{stat.icon}</div>
                                         <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{stat.name}</h4>
@@ -97,14 +97,14 @@ export default function SystemSection() {
 
                         {/* Дотоодын ПХ хөгжүүлэлтийн жагсаалт (Bottom Wide) */}
                         <div
-                            className="row-span-1 bg-[#000000d6] rounded-[3rem] p-8 relative overflow-hidden flex items-center">
+                            className="row-span-1  rounded-[3rem] p-8 relative overflow-hidden flex items-center">
                             <div className="absolute inset-0 opacity-10" style={{
                                 backgroundImage: 'radial-gradient(#ffffff 1px, transparent 0)',
                                 backgroundSize: '30px 30px'
                             }}/>
                             <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
                                 {[
-                                    {label: "Өөрсдийн хөгжүүлсэн", count: 11, unit: "ПХ"},
+                                    {label: "Өөрсдийн хөгжүүлсэн", count: 11, unit: "Программ хангамж"},
                                     {label: "Лицензтэй программ", count: 9, unit: "эрх"},
                                     {label: "Датабааз систем", count: 4, unit: "төрөл"},
                                     {label: "Хөгжүүлэлтийн хэл", count: 8, unit: "хэл"}

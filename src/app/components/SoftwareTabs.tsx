@@ -35,7 +35,7 @@ export default function SoftwareTabs() {
 
     return (
         <div className="col-span-12 lg:col-span-4 h-full">
-            <div className="bg-white p-6 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col max-h-[500px]">
+            <div className=" p-6 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col max-h-[500px]">
 
                 {/* Tab Switching */}
                 <div className="flex p-1.5 bg-slate-100/50 rounded-2xl mb-6">
