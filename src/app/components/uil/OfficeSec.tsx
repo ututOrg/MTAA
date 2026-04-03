@@ -1,5 +1,6 @@
 import {motion, AnimatePresence} from "framer-motion";
 import React, {useState} from "react";
+import {Button} from "../ui/button";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface OfficeItem {
@@ -9,6 +10,7 @@ interface OfficeItem {
     desc: string;
     engineer: number;
     repairman: number;
+    tex?:number;
     img: string;
     icon: string;          // emoji fallback when img missing
     color: string;         // hex accent
@@ -19,6 +21,14 @@ interface OfficeItem {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const OFFICE_DATA: Record<string, OfficeItem> = {
     "Хяналтын камер": {
+        id: "ID-01", stats: "719", unit: "Камер",
+        desc: "Хяналтын камерын систем 719 ширхэг камер\n Хяналтын камерын системийн програм хангамж, тоног төхөөрөмж болон холбогдох техник хэрэгслийн хэвийн, тасралтгүй үйл ажиллагааг хангаж ажиллах, шаардлагатай тохиолдолд оношилгоо, засвар үйлчилгээ хийх, байгууллагын станц, цэг, салбар нэгжүүдийн аюулгүй байдал, найдвартай ажиллагааг ханган, хяналт тавих",
+        engineer: 1, repairman: 2,
+        img: "/src/assets/cctv-3d.png", icon: "📷",
+        color: "#3b82f6", bgAlpha: "rgba(59,130,246,0.08)",
+        chart: [40, 70, 45, 90, 65, 85, 50, 75, 60, 80],
+    },
+    "Кибер аюулгүй байдал": {
         id: "ID-01", stats: "719", unit: "Камер",
         desc: "Хяналтын камерын систем 719 ширхэг камер\n Хяналтын камерын системийн програм хангамж, тоног төхөөрөмж болон холбогдох техник хэрэгслийн хэвийн, тасралтгүй үйл ажиллагааг хангаж ажиллах, шаардлагатай тохиолдолд оношилгоо, засвар үйлчилгээ хийх, байгууллагын станц, цэг, салбар нэгжүүдийн аюулгүй байдал, найдвартай ажиллагааг ханган, хяналт тавих",
         engineer: 1, repairman: 2,
@@ -267,7 +277,9 @@ export default function OfficeSec() {
                             </div>
                             <div className="flex gap-2.5 mb-auto">
                                 <StaffCard icon="👤" label="Инженер" value={d.engineer} color={d.color}/>
-                                <StaffCard icon="🛠️" label="Засварчин" value={d.repairman} color={d.color}/>
+                                {d.tex ? <StaffCard icon="🛠️" label="Техникч" value={d.tex!} color={d.color}/> : ""}
+                                {d.repairman ?
+                                    <StaffCard icon="🛠️" label="Засварчин" value={d.repairman!} color={d.color}/> : ""}
                             </div>
 
                             <div className="mt-6">
@@ -320,7 +332,9 @@ export default function OfficeSec() {
                                                 }}
                                             />
                                         ) : null}
+
                                         <span>{d.icon}</span>
+
                                     </div>
                                 </div>
 

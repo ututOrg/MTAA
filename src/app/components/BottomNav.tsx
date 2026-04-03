@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import {
     FaBuilding,
+    FaCamera,
     FaDatabase,
     FaCode,
     FaChartLine,
@@ -15,6 +16,7 @@ interface BottomNavProps {
 }
 
 const menu = [
+    { id: "camera", label: "Камер", icon: FaCamera },
     { id: "office", label: "Оффис хэсэг", icon: FaBuilding },
     { id: "data", label: "Дата хяналт хэсэг", icon: FaDatabase },
     { id: "program", label: "Программ хэсэг", icon: FaCode },
