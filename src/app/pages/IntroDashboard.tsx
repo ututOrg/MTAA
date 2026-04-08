@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {useEffect, useState} from "react";
+import {ChevronLeft, ChevronRight} from "lucide-react";
 import albaImg from "@/app/components/assets/alba.jpg";
 import blogImg from "@/app/components/assets/blog_2.jpg";
+import {motion} from "framer-motion";
+import ThreeBackground from "../components/ThreeBackground";
+import Nuur from "../components/Nuur";
+
 const slides = [
     {
         title: "МЭДЭЭЛЛИЙН ТЕХНОЛОГИ, АВТОМАТЖУУЛАЛТ АЛБАНЫ",
@@ -15,7 +19,7 @@ const slides = [
     },
 ];
 
-export default function IntroDashboard({ isDark }: { isDark: boolean }) {
+export default function IntroDashboard({isDark}: { isDark: boolean }) {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -33,7 +37,8 @@ export default function IntroDashboard({ isDark }: { isDark: boolean }) {
 
     return (
         <div className="w-full mt-4">
-
+            <Nuur/>
+            {/*<ThreeBackground/>*/}
             <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 h-auto md:h-[420px]">
 
                 {slides.map((slide, i) => (
@@ -49,22 +54,22 @@ export default function IntroDashboard({ isDark }: { isDark: boolean }) {
 
                             <div className="bg-black/1 ">
 
-                                <p className={`text-xs uppercase tracking-widest  ${!isDark? 'text-black/60' :'text-white/60' }`}>
+                                <p className={`text-xs uppercase tracking-widest  ${!isDark ? 'text-black/60' : 'text-white/60'}`}>
                                     Танилцуулга
                                 </p>
 
-                                <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${!isDark? 'text-black/60' :'text-white' } font-semibold leading-snug  mt-2 drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)]`}>
-                                    МЭДЭЭЛЛИЙН ТЕХНОЛОГИ, <br />
+                                <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${!isDark ? 'text-black/60' : 'text-white'} font-semibold leading-snug  mt-2 drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)]`}>
+                                    МЭДЭЭЛЛИЙН ТЕХНОЛОГИ, <br/>
                                     АВТОМАТЖУУЛАЛТ АЛБА
                                 </h1>
 
-                                <p className={`text-sm md:text-base ${!isDark? 'text-black/80' :'text-white' } mt-4 leading-relaxed`}>
-                                   <i>Мэдээллийн технологи, автоматжуулалт алба нь байгууллагын
-                                    мэдээллийн технологийн бүхий л үйл ажиллагааг зохион байгуулж,
-                                    хэрэгжүүлэх үүрэгтэй.</i>
+                                <p className={`text-sm md:text-base ${!isDark ? 'text-black/80' : 'text-white'} mt-4 leading-relaxed`}>
+                                    <i>Мэдээллийн технологи, автоматжуулалт алба нь байгууллагын
+                                        мэдээллийн технологийн бүхий л үйл ажиллагааг зохион байгуулж,
+                                        хэрэгжүүлэх үүрэгтэй.</i>
                                 </p>
 
-                                <p className={`text-sm md:text-base ${!isDark? 'text-black/80' :'text-white' } mt-2 leading-relaxed`}>
+                                <p className={`text-sm md:text-base ${!isDark ? 'text-black/80' : 'text-white'} mt-2 leading-relaxed`}>
                                     <i> Ус хангамжийн байгууллагын дижитал шилжилт, найдвартай ажиллагааг 24/7 хангах,
                                         автоматжуулалт, дата төвийн иж бүрэн шийдэл.</i>
                                 </p>
@@ -91,7 +96,7 @@ export default function IntroDashboard({ isDark }: { isDark: boolean }) {
                                 className="absolute left-3 top-1/2 -translate-y-1/2 z-20
                 bg-white/20 backdrop-blur-md rounded-full p-2 hover:scale-110 transition"
                             >
-                                <ChevronLeft />
+                                <ChevronLeft/>
                             </button>
 
                             {/* ➡ RIGHT */}
@@ -100,13 +105,14 @@ export default function IntroDashboard({ isDark }: { isDark: boolean }) {
                                 className="absolute right-3 top-1/2 -translate-y-1/2 z-20
    bg-white/20 backdrop-blur-md rounded-full p-2 hover:scale-110 transition"
                             >
-                                <ChevronRight />
+                                <ChevronRight/>
                             </button>
 
                         </div>
 
                         {/* 🔥 DESKTOP FADE (unchanged) */}
-                        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-black/5 to-transparent" />
+                        <div
+                            className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-black/5 to-transparent"/>
 
                     </div>
                 ))}

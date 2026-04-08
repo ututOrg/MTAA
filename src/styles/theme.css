@@ -1,5 +1,11 @@
 @custom-variant dark (&:is(.dark *));
+@theme {
+  --color-very-peri: #6667AB;
+  --color-peri-light: #8E91D6;
+  --color-peri-dark: #4E4F8A;
 
+  --font-sans: "Inter", "sans-serif";
+}
 :root {
   --font-size: 16px;
   --background: #ffffff;
