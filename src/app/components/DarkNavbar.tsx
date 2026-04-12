@@ -12,9 +12,9 @@ export function DarkNavbar({ isDark, toggleTheme }: DarkNavbarProps) {
 
     const tabs = [
         { name: 'Танилцуулга', path: '/' },
-        { name: 'Зорилго зорилт', path: '/logistics' },
+        // { name: 'Зорилго зорилт', path: '/logistics' },
         { name: 'Түүхэн замнал', path: '/production' },
-        { name: 'Үйл ажиллагааны чиглэл', path: '/sales' },
+        // { name: 'Үйл ажиллагааны чиглэл', path: '/sales' },
         { name: 'Цаашдын зорилт', path: '/pov' },
     ];
 

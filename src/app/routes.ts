@@ -13,7 +13,7 @@
         children: [
           { index: true, Component: Dashboard },
           { path: 'production', Component: Production },
-          { path: 'logistics', Component: Zorilgo },
+          // { path: 'logistics', Component: Zorilgo },
           { path: 'sales', Component: Chiglel },
             { path: 'pov', Component: Zorilt },
         ],

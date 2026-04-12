@@ -78,23 +78,37 @@ export default function TimelineSection({ year, title, work, desc, isDark }: any
                                 <span className={isDark ? "text-white" : "text-slate-950"}>
                                     {title.split("\n")[0]}
                                 </span>
-                                <br />
-                                <span className="opacity-15 block mt-2"
-                                      style={{ WebkitTextStroke: isDark ? '1px white' : '1.5px black', color: 'transparent' }}>
-                                    {title.split("\n")[1]}
-                                </span>
-                            </h1>
+                                <br/>
+                                <span
+                                    className="block mt-2 font-[1000] uppercase tracking-tighter leading-[0.85] select-none"
+                                    style={{
+                                        fontSize: 'clamp(3rem, 1vw, 8rem)',
+                                        // Текстийг өөрийг нь тунгалаг болгож арын градиентыг гаргаж ирнэ
+                                        color: 'transparent',
+                                        // Танд байгаа өнгөнүүд (W.from, W.to) эсвэл шууд тод өнгө:
+                                        backgroundImage: `linear-gradient(135deg, #4CAF50 0%, #6094ea 100%)`,
+                                        WebkitBackgroundClip: "text",
+                                        backgroundClip: "text",
+                                        // Тод байдлыг нэмэгдүүлэх Glow эффект
+                                        filter: isDark ? 'drop-shadow(0 0 15px rgba(76, 175, 240, 0.3))' : 'none',
+                                    }}
+                                >
+    {title.split("\n")[1]}
+</span>
 
-                            <div className="space-y-4 max-w-2xl mx-auto lg:mx-0">
-                                <div className={`inline-block px-3 py-1 rounded-md text-[10px] font-bold tracking-[0.25em] uppercase border ${
+                        </h1>
+
+                        <div className="space-y-4 max-w-2xl mx-auto lg:mx-0">
+                            <div
+                                className={`inline-block px-3 py-1 rounded-md text-[10px] font-bold tracking-[0.25em] uppercase border ${
                                     isDark ? "text-blue-400 border-blue-400/20 bg-blue-400/5" : "text-blue-600 border-blue-600/20 bg-blue-600/5"
                                 }`}>
-                                    {work}
-                                </div>
-                                <p className={`text-sm sm:text-base lg:text-lg whitespace-pre-line leading-relaxed font-medium ${
+                                {work}
+                            </div>
+                            <p className={`text-sm sm:text-base lg:text-lg whitespace-pre-line leading-relaxed font-medium ${
                                     isDark ? "text-slate-400" : "text-slate-600"
                                 }`}>
-                                    {desc}
+                                {desc}
                                 </p>
                             </div>
                         </motion.div>
